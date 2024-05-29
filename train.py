@@ -3,10 +3,10 @@ import torch
 import torch.nn as nn
 from torch.optim import Adam
 import os
-from networks._mlp import mlp
+from networks.mymlp import mlp
 from utils.parsing import train_parser_args
 from module.get_dataloader import get_target_loader
-from utils.utils import evaluate, save_args, make_folder
+from utils.utils import evaluate, save_args, make_folder, get_models
 
 def main():
     args = train_parser_args()
@@ -22,7 +22,7 @@ def main():
     train_loader, test_loader = get_target_loader(args)
 
     # 모델 객체를 생성
-    model = mlp(args.input_size, args.hidden_size, args.output_size).to(args.device)
+    model = get_models(args).to(args.device)
 
     # Loss 계산하는 계산기 (분류 문제)
     criteria = nn.CrossEntropyLoss()

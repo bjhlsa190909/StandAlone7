@@ -77,3 +77,14 @@ def postprocess_image(output):
     prob = values.item()*100
     predict = indices.item()
     return prob, predict
+
+def get_models(args):
+    if args.model_type == 'mlp':
+        from networks.mymlp import mlp
+        model = mlp(args.input_size, args.hidden_size, args.output_size)
+
+    elif args.model_type == 'lenet':
+        from networks.mylenet import lenet
+        model = lenet(args.num_classes)
+    
+    return model
