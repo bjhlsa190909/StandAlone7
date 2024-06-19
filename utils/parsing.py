@@ -5,7 +5,7 @@ def train_parser_args():
     # hyper-parameters 설정
     ## 모델 관련
     parser.add_argument('--model_type',type=str,default='lenet',
-                        choices=['lenet', 'mlp', 'vgg'], help='사용 모델 종류')
+                        choices=['lenet', 'mlp', 'vgg', 'resnet'], help='사용 모델 종류')
 
     ### MLP
     parser.add_argument('--input_size',type=int, default=28*28, help='모델 입력의 크기')
@@ -18,6 +18,8 @@ def train_parser_args():
     ### VGG
     parser.add_argument('--vgg_type', type=str, default='A', help='A~E까지 vgg type선택')
 
+    ### ResNet
+    parser.add_argument('--resnet_type',type=str, default='18', choices=['18', '34', '50', '101', '152'], help='A~E까지의 모델 타입')
     ## 데이터 관련
     parser.add_argument('--batch_size', type=int, default=100)
     parser.add_argument('--dataset', type=str,default='cifar', choices=['mnist','cifar'])

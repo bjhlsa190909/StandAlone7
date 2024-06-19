@@ -87,4 +87,8 @@ def get_models(args):
         from networks.mylenet import lenet
         model = lenet(args.num_classes)
     
+    elif args.model_type == 'resnet':
+        from networks.myresnet import resnet
+        model = resnet(args.num_classes)
+
     return model
